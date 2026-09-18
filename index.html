@@ -1,0 +1,2833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrvioSite — Affordable Websites for Small Businesses</title>
+    <meta name="description" content="Clean, fast, mobile-friendly websites for small businesses without the agency-sized price tag.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;900&family=Bebas+Neue&family=Poppins:wght@400;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           CSS VARIABLES
+           ============================================ */
+        :root {
+            --color-bg: #f8f7f4;
+            --color-bg-alt: #f0efeb;
+            --color-text: #1a1a1a;
+            --color-text-muted: #5c5c5c;
+            --color-text-light: #8a8a8a;
+            --color-primary: #1b4332;
+            --color-primary-light: #2d6a4f;
+            --color-accent: #c4513a;
+            --color-accent-hover: #a8412e;
+            --color-border: #e2e0db;
+            --color-border-dark: #cdcac4;
+            --color-white: #ffffff;
+            --color-card: #ffffff;
+
+            --font-serif: 'DM Serif Display', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --space-3xl: 9rem;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+
+            --max-width: 1140px;
+            --nav-height: 64px;
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            line-height: 1.2;
+            color: var(--color-text);
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-text);
+            border: 1.5px solid var(--color-border-dark);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-text);
+            background: var(--color-white);
+        }
+
+        .btn-accent {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        .btn-accent:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.82rem;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: rgba(248, 247, 244, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--color-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1.1rem;
+            background: var(--color-primary);
+            color: var(--color-white) !important;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-primary-light);
+        }
+
+        /* Mobile Menu Button */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--color-text);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            padding-top: calc(var(--nav-height) + var(--space-2xl));
+            padding-bottom: var(--space-3xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 520px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.85rem;
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            font-size: 0.78rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-badge .dot {
+            width: 7px;
+            height: 7px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.4rem, 5.5vw, 3.5rem);
+            line-height: 1.15;
+            color: var(--color-text);
+            margin-bottom: var(--space-md);
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--color-primary);
+        }
+
+        .hero-text {
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        /* Hero Mockup */
+        .hero-mockup {
+            position: relative;
+            transform: rotate(1deg);
+        }
+
+        .browser-mockup {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .browser-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 14px;
+            background: #f5f5f3;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .browser-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .browser-dot:nth-child(1) { background: #ff5f57; }
+        .browser-dot:nth-child(2) { background: #febc2e; }
+        .browser-dot:nth-child(3) { background: #28c840; }
+
+        .browser-url {
+            flex: 1;
+            margin-left: 10px;
+            padding: 4px 10px;
+            background: var(--color-white);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            color: var(--color-text-light);
+            border: 1px solid var(--color-border);
+        }
+
+        .browser-content {
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        .mini-site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .mini-site-logo {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            color: var(--color-primary);
+        }
+
+        .mini-site-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .mini-site-nav span {
+            width: 35px;
+            height: 3px;
+            background: var(--color-border-dark);
+            border-radius: 2px;
+        }
+
+        .mini-site-hero {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .mini-site-hero-text {
+            flex: 1;
+        }
+
+        .mini-site-hero-text h4 {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .mini-site-hero-text p {
+            font-size: 0.6rem;
+            color: var(--color-text-light);
+            margin-bottom: 8px;
+        }
+
+        .mini-btn-placeholder {
+            width: 60px;
+            height: 16px;
+            background: var(--color-primary);
+            border-radius: 3px;
+        }
+
+        .mini-site-hero-img {
+            width: 80px;
+            height: 60px;
+            background: linear-gradient(135deg, #d4edda 0%, #a8d5a2 100%);
+            border-radius: var(--radius-sm);
+            flex-shrink: 0;
+        }
+
+        .mini-site-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .mini-feature {
+            text-align: center;
+        }
+
+        .mini-feature-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--color-bg-alt);
+            border-radius: 50%;
+            margin: 0 auto 4px;
+            border: 1px solid var(--color-border);
+        }
+
+        .mini-feature-label {
+            font-size: 0.55rem;
+            color: var(--color-text-light);
+        }
+
+        /* ============================================
+           PORTFOLIO SECTION
+           ============================================ */
+        .portfolio {
+            padding: var(--space-3xl) 0;
+        }
+
+        .portfolio-header {
+            margin-bottom: var(--space-xl);
+            max-width: 500px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            gap: var(--space-xl);
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: var(--space-lg);
+            align-items: center;
+            padding: var(--space-lg);
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-card:nth-child(even) {
+            grid-template-columns: 0.9fr 1.1fr;
+        }
+
+        .project-card:nth-child(even) .project-preview {
+            order: -1;
+        }
+
+        .project-info .project-category {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-accent);
+            margin-bottom: var(--space-xs);
+        }
+
+        .project-info h3 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+        }
+
+        /* Project Previews */
+        .project-preview {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .project-preview .browser-content {
+            min-height: 260px;
+            padding: 0;
+        }
+
+        /* ============================================
+           GREENLEAF LANDSCAPING PREVIEW
+           ============================================ */
+        .preview-landscaping .browser-content {
+            background: #fafdf7;
+        }
+
+        .gl-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            border-bottom: 1px solid #e8f0e4;
+        }
+
+        .gl-header .gl-logo {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            color: #1b4332;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .gl-logo-leaf {
+            width: 16px;
+            height: 16px;
+            background: #2d6a4f;
+            border-radius: 0 50% 50% 50%;
+            transform: rotate(45deg);
+        }
+
+        .gl-header .gl-nav {
+            display: flex;
+            gap: 14px;
+        }
+
+        .gl-nav span {
+            font-size: 0.6rem;
+            color: #5c8a6e;
+            font-weight: 500;
+        }
+
+        .gl-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            padding: 24px 20px 20px;
+            align-items: center;
+        }
+
+        .gl-hero-text h4 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: #1b4332;
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+
+        .gl-hero-text p {
+            font-size: 0.65rem;
+            color: #5c8a6e;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .gl-btn {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #2d6a4f;
+            color: white;
+            font-size: 0.55rem;
+            font-weight: 600;
+            border-radius: 4px;
+            letter-spacing: 0.02em;
+        }
+
+        .gl-hero-img {
+            height: 110px;
+            border-radius: 6px;
+            background: linear-gradient(145deg, #52b788 0%, #2d6a4f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gl-hero-img::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+        }
+
+        .gl-hero-img::after {
+            content: "";
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 30px;
+            height: 30px;
+            background: #40916c;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .gl-services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding: 0 20px 20px;
+        }
+
+        .gl-service {
+            padding: 10px 8px;
+            background: #f0f8ed;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #ddeedd;
+        }
+
+        .gl-service-icon {
+            width: 22px;
+            height: 22px;
+            margin: 0 auto 5px;
+            background: #2d6a4f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.6rem;
+        }
+
+        .gl-service-label {
+            font-size: 0.55rem;
+            color: #3d6b4f;
+            font-weight: 600;
+        }
+
+        /* ============================================
+           DOWNTOWN CUTS PREVIEW
+           ============================================ */
+        .preview-barber .browser-content {
+            background: #111111;
+        }
+
+        .preview-barber .browser-bar {
+            background: #0a0a0a;
+            border-bottom-color: #2a2a2a;
+        }
+
+        .preview-barber .browser-url {
+            background: #1a1a1a;
+            border-color: #333;
+            color: #666;
+        }
+
+        .db-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .db-header .db-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem;
+            color: #d4a853;
+            letter-spacing: 0.15em;
+        }
+
+        .db-header .db-nav {
+            display: flex;
+            gap: 14px;
+        }
+
+        .db-nav span {
+            font-size: 0.6rem;
+            color: #888;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .db-hero {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 16px;
+            padding: 24px 20px 20px;
+            align-items: center;
+        }
+
+        .db-hero-text h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #f5f5f5;
+            line-height: 1.2;
+            margin-bottom: 6px;
+            font-weight: 900;
+        }
+
+        .db-hero-text h4 span {
+            color: #d4a853;
+        }
+
+        .db-hero-text p {
+            font-size: 0.6rem;
+            color: #888;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .db-btn {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #d4a853;
+            color: #111;
+            font-size: 0.55rem;
+            font-weight: 700;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .db-hero-img {
+            height: 110px;
+            border-radius: 4px;
+            background: linear-gradient(145deg, #333 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .db-hero-img::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border: 2px solid #d4a853;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .db-hero-img::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 40px;
+            background: #d4a853;
+            opacity: 0.4;
+            border-radius: 4px;
+        }
+
+        .db-services {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            padding: 0 20px 16px;
+        }
+
+        .db-service {
+            padding: 8px 10px;
+            background: #1a1a1a;
+            border-radius: 3px;
+            border: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .db-service-name {
+            font-size: 0.55rem;
+            color: #ccc;
+            font-weight: 500;
+        }
+
+        .db-service-price {
+            font-size: 0.55rem;
+            color: #d4a853;
+            font-weight: 700;
+        }
+
+        /* ============================================
+           TONY'S PIZZA PREVIEW
+           ============================================ */
+        .preview-pizza .browser-content {
+            background: #fff8f0;
+        }
+
+        .tp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            border-bottom: 3px solid #e8a838;
+            background: #fff3e0;
+        }
+
+        .tp-header .tp-logo {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            color: #c0392b;
+            font-weight: 700;
+        }
+
+        .tp-header .tp-nav {
+            display: flex;
+            gap: 14px;
+        }
+
+        .tp-nav span {
+            font-size: 0.6rem;
+            color: #7a5c3e;
+            font-weight: 600;
+        }
+
+        .tp-hero {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 16px;
+            padding: 20px 20px 16px;
+            align-items: center;
+        }
+
+        .tp-hero-img {
+            width: 100%;
+            height: 110px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 40% 40%, #f4d35e 0%, #e8a838 40%, #c0392b 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 4px 4px 0 rgba(192, 57, 43, 0.2);
+        }
+
+        .tp-hero-img::before {
+            content: "";
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 14px;
+            height: 14px;
+            background: #c0392b;
+            border-radius: 50%;
+            box-shadow:
+                20px 5px 0 -2px #8b4513,
+                8px 22px 0 -3px #c0392b,
+                30px 15px 0 -2px #2d6a4f,
+                -5px 15px 0 -2px #8b4513;
+        }
+
+        .tp-hero-text h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: #c0392b;
+            line-height: 1.25;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .tp-hero-text p {
+            font-size: 0.6rem;
+            color: #7a5c3e;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .tp-btn {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #c0392b;
+            color: white;
+            font-size: 0.55rem;
+            font-weight: 700;
+            border-radius: 20px;
+            letter-spacing: 0.02em;
+        }
+
+        .tp-menu-preview {
+            padding: 0 20px 16px;
+        }
+
+        .tp-menu-title {
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #7a5c3e;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed #e8c468;
+        }
+
+        .tp-menu-items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+        }
+
+        .tp-menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 8px;
+            background: #fff3e0;
+            border-radius: 4px;
+            border: 1px solid #f5d89a;
+        }
+
+        .tp-menu-item-name {
+            font-size: 0.55rem;
+            color: #5c3d1e;
+            font-weight: 600;
+        }
+
+        .tp-menu-item-price {
+            font-size: 0.5rem;
+            color: #c0392b;
+            font-weight: 700;
+        }
+
+        /* ============================================
+           SERVICES SECTION
+           ============================================ */
+        .services {
+            padding: var(--space-3xl) 0;
+            background: var(--color-bg-alt);
+        }
+
+        .services-header {
+            margin-bottom: var(--space-xl);
+            max-width: 500px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .service-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .service-card.featured {
+            border-color: var(--color-primary);
+            border-width: 2px;
+            position: relative;
+        }
+
+        .service-card.featured::before {
+            content: "Popular";
+            position: absolute;
+            top: -10px;
+            right: 16px;
+            background: var(--color-primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .service-name {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .service-price span {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--color-text-muted);
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            font-size: 0.88rem;
+            color: var(--color-text-muted);
+            padding: 6px 0;
+            border-bottom: 1px solid var(--color-border);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .services-note {
+            font-size: 0.82rem;
+            color: var(--color-text-light);
+            font-style: italic;
+            text-align: center;
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-border);
+            margin-top: var(--space-md);
+        }
+
+        /* ============================================
+           PROCESS SECTION
+           ============================================ */
+        .process {
+            padding: var(--space-3xl) 0;
+        }
+
+        .process-header {
+            margin-bottom: var(--space-xl);
+            max-width: 500px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: "";
+            position: absolute;
+            top: 28px;
+            left: 12%;
+            right: 12%;
+            height: 1px;
+            background: var(--color-border-dark);
+            z-index: 0;
+        }
+
+        .process-step {
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-white);
+            border: 2px solid var(--color-primary);
+            border-radius: 50%;
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .step-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .step-desc {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           WHY WORK WITH ME
+           ============================================ */
+        .why-me {
+            padding: var(--space-3xl) 0;
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .why-me-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: var(--space-xl);
+            align-items: start;
+        }
+
+        .why-me .section-label {
+            color: #74c69d;
+        }
+
+        .why-me .section-title {
+            color: var(--color-white);
+        }
+
+        .why-me .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .why-me-list {
+            list-style: none;
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        .why-me-list li {
+            padding: var(--space-md);
+            background: rgba(255,255,255,0.06);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .why-me-list h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .why-me-list p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .contact {
+            padding: var(--space-3xl) 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: var(--space-xl);
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            line-height: 1.2;
+            margin-bottom: var(--space-sm);
+        }
+
+        .contact-info p {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-md);
+            line-height: 1.7;
+        }
+
+        .contact-alt {
+            font-size: 0.88rem;
+            color: var(--color-text-muted);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-border);
+            margin-top: var(--space-md);
+        }
+
+        .contact-alt a {
+            color: var(--color-accent);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .contact-form {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--color-text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            border: 1.5px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            background: var(--color-bg);
+            color: var(--color-text);
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: var(--color-white);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 12px;
+            background: var(--color-accent);
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .form-submit:hover {
+            background: var(--color-accent-hover);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: var(--space-xl) 0;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-brand {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+        }
+
+        .footer-tagline {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            margin-top: 2px;
+        }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: var(--color-text-light);
+        }
+
+        /* ============================================
+           MODAL
+           ============================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-md);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            max-width: 780px;
+            width: 100%;
+            max-height: 92vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            color: var(--color-text-muted);
+            z-index: 10;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .modal-close:hover {
+            background: var(--color-border);
+            color: var(--color-text);
+        }
+
+        .modal-browser {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .modal-browser .browser-content {
+            min-height: 450px;
+            padding: 0;
+        }
+
+        .modal-project-info {
+            padding: 20px 24px 24px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .modal-project-info h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .modal-project-info .category {
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .modal-project-info p {
+            font-size: 0.88rem;
+            color: var(--color-text-muted);
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           MODAL: GREENLEAF LANDSCAPING
+           ============================================ */
+        .modal-gl .browser-content {
+            background: #fafdf7;
+        }
+
+        .modal-gl .gl-header {
+            padding: 16px 30px;
+        }
+
+        .modal-gl .gl-header .gl-logo {
+            font-size: 1.1rem;
+        }
+
+        .modal-gl .gl-nav span {
+            font-size: 0.75rem;
+        }
+
+        .modal-gl .gl-hero {
+            padding: 30px 30px 24px;
+            gap: 24px;
+        }
+
+        .modal-gl .gl-hero-text h4 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .modal-gl .gl-hero-text p {
+            font-size: 0.8rem;
+            margin-bottom: 14px;
+        }
+
+        .modal-gl .gl-btn {
+            padding: 8px 18px;
+            font-size: 0.7rem;
+        }
+
+        .modal-gl .gl-hero-img {
+            height: 160px;
+        }
+
+        .modal-gl .gl-services {
+            padding: 0 30px 24px;
+            gap: 12px;
+        }
+
+        .modal-gl .gl-service {
+            padding: 14px 12px;
+        }
+
+        .modal-gl .gl-service-icon {
+            width: 28px;
+            height: 28px;
+            font-size: 0.7rem;
+        }
+
+        .modal-gl .gl-service-label {
+            font-size: 0.7rem;
+        }
+
+        .modal-gl .gl-testimonial {
+            margin: 0 30px 24px;
+            padding: 20px;
+            background: #f0f8ed;
+            border-radius: 8px;
+            border-left: 3px solid #2d6a4f;
+        }
+
+        .modal-gl .gl-testimonial p {
+            font-size: 0.8rem;
+            color: #3d6b4f;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .modal-gl .gl-testimonial .author {
+            font-size: 0.7rem;
+            color: #5c8a6e;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .modal-gl .gl-cta {
+            margin: 0 30px 30px;
+            padding: 24px;
+            background: #2d6a4f;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .modal-gl .gl-cta h5 {
+            font-family: var(--font-serif);
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .modal-gl .gl-cta p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 12px;
+        }
+
+        .modal-gl .gl-cta-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: white;
+            color: #2d6a4f;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 4px;
+        }
+
+        /* ============================================
+           MODAL: DOWNTOWN CUTS
+           ============================================ */
+        .modal-db .browser-content {
+            background: #0a0a0a;
+        }
+
+        .modal-db .browser-bar {
+            background: #050505;
+            border-bottom-color: #222;
+        }
+
+        .modal-db .browser-url {
+            background: #151515;
+            border-color: #2a2a2a;
+            color: #555;
+        }
+
+        .modal-db .db-header {
+            padding: 16px 30px;
+        }
+
+        .modal-db .db-header .db-logo {
+            font-size: 1.3rem;
+        }
+
+        .modal-db .db-nav span {
+            font-size: 0.75rem;
+        }
+
+        .modal-db .db-hero {
+            padding: 30px 30px 24px;
+            gap: 24px;
+        }
+
+        .modal-db .db-hero-text h4 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+        }
+
+        .modal-db .db-hero-text p {
+            font-size: 0.8rem;
+            margin-bottom: 14px;
+        }
+
+        .modal-db .db-btn {
+            padding: 9px 20px;
+            font-size: 0.7rem;
+        }
+
+        .modal-db .db-hero-img {
+            height: 160px;
+        }
+
+        .modal-db .db-services {
+            padding: 0 30px 24px;
+            gap: 10px;
+        }
+
+        .modal-db .db-service {
+            padding: 12px 14px;
+        }
+
+        .modal-db .db-service-name {
+            font-size: 0.7rem;
+        }
+
+        .modal-db .db-service-price {
+            font-size: 0.7rem;
+        }
+
+        .modal-db .db-hours {
+            margin: 0 30px 24px;
+            padding: 16px 20px;
+            background: #1a1a1a;
+            border-radius: 4px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .modal-db .db-hours-title {
+            font-size: 0.7rem;
+            color: #d4a853;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+
+        .modal-db .db-hours-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .modal-db .db-hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .modal-db .db-hours-row .day {
+            font-size: 0.7rem;
+            color: #aaa;
+        }
+
+        .modal-db .db-hours-row .time {
+            font-size: 0.7rem;
+            color: #ccc;
+            font-weight: 500;
+        }
+
+        .modal-db .db-gallery {
+            margin: 0 30px 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .modal-db .db-gallery-item {
+            aspect-ratio: 1;
+            border-radius: 4px;
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border: 1px solid #333;
+        }
+
+        .modal-db .db-gallery-item:nth-child(1) { background: linear-gradient(145deg, #3d2c1a, #2a1f14); }
+        .modal-db .db-gallery-item:nth-child(2) { background: linear-gradient(145deg, #2a2a3d, #1a1a2a); }
+        .modal-db .db-gallery-item:nth-child(3) { background: linear-gradient(145deg, #3d3d2a, #2a2a1a); }
+        .modal-db .db-gallery-item:nth-child(4) { background: linear-gradient(145deg, #2a3d2a, #1a2a1a); }
+
+        /* ============================================
+           MODAL: TONY'S PIZZA
+           ============================================ */
+        .modal-tp .browser-content {
+            background: #fff8f0;
+        }
+
+        .modal-tp .tp-header {
+            padding: 16px 30px;
+        }
+
+        .modal-tp .tp-header .tp-logo {
+            font-size: 1.4rem;
+        }
+
+        .modal-tp .tp-nav span {
+            font-size: 0.75rem;
+        }
+
+        .modal-tp .tp-hero {
+            padding: 24px 30px 20px;
+            gap: 24px;
+        }
+
+        .modal-tp .tp-hero-img {
+            height: 150px;
+        }
+
+        .modal-tp .tp-hero-text h4 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .modal-tp .tp-hero-text p {
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+
+        .modal-tp .tp-btn {
+            padding: 8px 18px;
+            font-size: 0.7rem;
+        }
+
+        .modal-tp .tp-menu-preview {
+            padding: 0 30px 20px;
+        }
+
+        .modal-tp .tp-menu-title {
+            font-size: 0.75rem;
+            margin-bottom: 12px;
+        }
+
+        .modal-tp .tp-menu-items {
+            gap: 8px;
+        }
+
+        .modal-tp .tp-menu-item {
+            padding: 8px 12px;
+        }
+
+        .modal-tp .tp-menu-item-name {
+            font-size: 0.7rem;
+        }
+
+        .modal-tp .tp-menu-item-price {
+            font-size: 0.65rem;
+        }
+
+        .modal-tp .tp-specials {
+            margin: 0 30px 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .modal-tp .tp-special {
+            padding: 16px 12px;
+            background: #fff3e0;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #f5d89a;
+            position: relative;
+        }
+
+        .modal-tp .tp-special.popular::before {
+            content: "★ Popular";
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #c0392b;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.55rem;
+            font-weight: 700;
+        }
+
+        .modal-tp .tp-special-emoji {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .modal-tp .tp-special h5 {
+            font-size: 0.75rem;
+            color: #5c3d1e;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .modal-tp .tp-special .desc {
+            font-size: 0.6rem;
+            color: #7a5c3e;
+            margin-bottom: 6px;
+        }
+
+        .modal-tp .tp-special .price {
+            font-size: 0.85rem;
+            color: #c0392b;
+            font-weight: 700;
+        }
+
+        .modal-tp .tp-location {
+            margin: 0 30px 30px;
+            padding: 20px;
+            background: #fff3e0;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            border: 1px solid #f5d89a;
+        }
+
+        .modal-tp .tp-location-info h5 {
+            font-size: 0.8rem;
+            color: #c0392b;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .modal-tp .tp-location-info p {
+            font-size: 0.7rem;
+            color: #7a5c3e;
+            line-height: 1.5;
+        }
+
+        .modal-tp .tp-location-map {
+            height: 80px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #e8d5b7, #d4b896);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-tp .tp-location-map::before {
+            content: "📍";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+        }
+
+        .modal-tp .tp-location-map::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 20px,
+                rgba(0,0,0,0.03) 20px,
+                rgba(0,0,0,0.03) 21px
+            );
+        }
+
+        /* ============================================
+           MOBILE MENU
+           ============================================ */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--space-md);
+            z-index: 999;
+            transform: translateY(-100%);
+            transition: transform 0.3s;
+        }
+
+        .mobile-menu.active {
+            display: block;
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 12px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+            margin-top: 8px;
+            text-align: center;
+            background: var(--color-primary);
+            color: white;
+            border-radius: var(--radius-sm);
+            padding: 12px;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-lg);
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --space-2xl: 4rem;
+                --space-3xl: 5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+
+            .hero-mockup {
+                transform: rotate(0);
+                max-width: 400px;
+            }
+
+            .project-card,
+            .project-card:nth-child(even) {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+
+            .project-card:nth-child(even) .project-preview {
+                order: 0;
+            }
+
+            .why-me-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .footer .container {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-sm);
+            }
+
+            .modal-browser .browser-content {
+                min-height: 350px;
+            }
+
+            .modal-gl .gl-hero,
+            .modal-db .db-hero,
+            .modal-tp .tp-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-gl .gl-hero-img,
+            .modal-db .db-hero-img,
+            .modal-tp .tp-hero-img {
+                height: 120px;
+            }
+
+            .modal-gl .gl-services,
+            .modal-db .db-services,
+            .modal-tp .tp-menu-items,
+            .modal-tp .tp-specials {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .modal-db .db-gallery {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .modal-tp .tp-location {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                justify-content: center;
+            }
+
+            .modal {
+                margin: var(--space-sm);
+            }
+
+            .modal-gl .gl-services,
+            .modal-db .db-services,
+            .modal-tp .tp-menu-items,
+            .modal-tp .tp-specials {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-db .db-gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .modal-gl .gl-header,
+            .modal-db .db-header,
+            .modal-tp .tp-header,
+            .modal-gl .gl-hero,
+            .modal-db .db-hero,
+            .modal-tp .tp-hero,
+            .modal-gl .gl-services,
+            .modal-db .db-services,
+            .modal-tp .tp-menu-preview,
+            .modal-tp .tp-specials,
+            .modal-gl .gl-testimonial,
+            .modal-gl .gl-cta,
+            .modal-db .db-hours,
+            .modal-db .db-gallery,
+            .modal-tp .tp-location {
+                padding-left: 16px;
+                padding-right: 16px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .modal-gl .gl-testimonial,
+            .modal-gl .gl-cta,
+            .modal-db .db-hours,
+            .modal-db .db-gallery,
+            .modal-tp .tp-specials,
+            .modal-tp .tp-location {
+                margin-left: 16px;
+                margin-right: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         NAVIGATION
+         ============================================ -->
+    <nav class="nav">
+        <div class="container">
+            <a href="#" class="nav-logo">OrvioSite</a>
+            <ul class="nav-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="nav-cta">Get a Website</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact">Get a Website</a>
+    </div>
+
+    <!-- ============================================
+         HERO
+         ============================================ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="dot"></span>
+                        Currently accepting a few new projects
+                    </div>
+                    <h1>Websites that make small businesses look <em>legit.</em></h1>
+                    <p class="hero-text">I build clean, fast, mobile-friendly websites for small businesses without the agency-sized price tag.</p>
+                    <div class="hero-buttons">
+                        <a href="#work" class="btn btn-primary">See My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Let's Talk</a>
+                    </div>
+                </div>
+                <div class="hero-mockup">
+                    <div class="browser-mockup">
+                        <div class="browser-bar">
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                            <span class="browser-url">yourbusiness.com</span>
+                        </div>
+                        <div class="browser-content">
+                            <div class="mini-site-header">
+                                <span class="mini-site-logo">Your Business</span>
+                                <div class="mini-site-nav">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="mini-site-hero">
+                                <div class="mini-site-hero-text">
+                                    <h4>Your next customer is looking for you online.</h4>
+                                    <p>Make sure they find a website that looks professional.</p>
+                                    <div class="mini-btn-placeholder"></div>
+                                </div>
+                                <div class="mini-site-hero-img"></div>
+                            </div>
+                            <div class="mini-site-features">
+                                <div class="mini-feature">
+                                    <div class="mini-feature-icon"></div>
+                                    <span class="mini-feature-label">Fast</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <div class="mini-feature-icon"></div>
+                                    <span class="mini-feature-label">Mobile</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <div class="mini-feature-icon"></div>
+                                    <span class="mini-feature-label">Custom</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PORTFOLIO
+         ============================================ -->
+    <section class="portfolio" id="work">
+        <div class="container">
+            <div class="portfolio-header">
+                <span class="section-label">Website Concepts</span>
+                <h2 class="section-title">Example concepts</h2>
+                <p class="section-subtitle">Here are a few example concepts showing what I can build for different types of small businesses.</p>
+            </div>
+            <div class="portfolio-grid">
+                <!-- Project 1: GreenLeaf Landscaping -->
+                <div class="project-card">
+                    <div class="project-preview preview-landscaping">
+                        <div class="browser-mockup">
+                            <div class="browser-bar">
+                                <span class="browser-dot"></span>
+                                <span class="browser-dot"></span>
+                                <span class="browser-dot"></span>
+                                <span class="browser-url">greenleaf-concept.example</span>
+                            </div>
+                            <div class="browser-content">
+                                <div class="gl-header">
+                                    <div class="gl-logo">
+                                        <span class="gl-logo-leaf"></span>
+                                        GreenLeaf
+                                    </div>
+                                    <div class="gl-nav">
+                                        <span>Services</span>
+                                        <span>Gallery</span>
+                                        <span>Contact</span>
+                                    </div>
+                                </div>
+                                <div class="gl-hero">
+                                    <div class="gl-hero-text">
+                                        <h4>Beautiful lawns, expertly maintained.</h4>
+                                        <p>Professional landscaping for homes and businesses in the Springfield area.</p>
+                                        <span class="gl-btn">Get Free Quote</span>
+                                    </div>
+                                    <div class="gl-hero-img"></div>
+                                </div>
+                                <div class="gl-services">
+                                    <div class="gl-service">
+                                        <div class="gl-service-icon">🌳</div>
+                                        <span class="gl-service-label">Lawn Care</span>
+                                    </div>
+                                    <div class="gl-service">
+                                        <div class="gl-service-icon">🌺</div>
+                                        <span class="gl-service-label">Gardens</span>
+                                    </div>
+                                    <div class="gl-service">
+                                        <div class="gl-service-icon">🍂</div>
+                                        <span class="gl-service-label">Cleanup</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Landscaping</span>
+                        <h3>GreenLeaf Landscaping</h3>
+                        <p>A calm, nature-inspired website for a local landscaping company. Clean layout with service highlights, a testimonial, and an easy way for customers to request quotes.</p>
+                        <button class="btn btn-secondary btn-small view-demo" data-project="landscaping">View Demo</button>
+                    </div>
+                </div>
+
+                <!-- Project 2: Downtown Cuts -->
+                <div class="project-card">
+                    <div class="project-info">
+                        <span class="project-category">Barbershop</span>
+                        <h3>Downtown Cuts</h3>
+                        <p>A bold, stylish website for a modern barbershop. Dark theme with gold accents that matches the shop's interior. Includes services with pricing, hours, and a gallery.</p>
+                        <button class="btn btn-secondary btn-small view-demo" data-project="barber">View Demo</button>
+                    </div>
+                    <div class="project-preview preview-barber">
+                        <div class="browser-mockup">
+                            <div class="browser-bar">
+                                <span class="browser-dot"></span>
+                                <span class="browser-dot"></span>
+                                <span class="browser-dot"></span>
+                                <span class="browser-url">downtowncuts-concept.example</span>
+                            </div>
+                            <div class="browser-content">
+                                <div class="db-header">
+                                    <span class="db-logo">DOWNTOWN CUTS</span>
+                                    <div class="db-nav">
+                                        <span>Services</span>
+                                        <span>Gallery</span>
+                                        <span>Book</span>
+                                    </div>
+                                </div>
+                                <div class="db-hero">
+                                    <div class="db-hero-text">
+                                        <h4>Sharp cuts.<br><span>Classic style.</span></h4>
+                                        <p>Walk-ins welcome. Book online for priority seating.</p>
+                                        <span class="db-btn">Book Appointment</span>
+                                    </div>
+                                    <div class="db-hero-img"></div>
+                                </div>
+                                <div class="db-services">
+                                    <div class="db-service">
+                                        <span class="db-service-name">Classic Cut</span>
+                                        <span class="db-service-price">$30</span>
+                                    </div>
+                                    <div class="db-service">
+                                        <span class="db-service-name">Beard Trim</span>
+                                        <span class="db-service-price">$15</span>
+                                    </div>
+                                    <div class="db-service">
+                                        <span class="db-service-name">Hot Shave</span>
+                                        <span class="db-service-price">$35</span>
+                                    </div>
+                                    <div class="db-service">
+                                        <span class="db-service-name">The Works</span>
+                                        <span class="db-service-price">$65</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Tony's Pizza -->
+                <div class="project-card">
+                    <div class="project-preview preview-pizza">
+                        <div class="browser-mockup">
+                            <div class="browser-bar">
+                                <span class="browser-dot"></span>
+                                <span class="browser-dot"></span>
+                                <span class="browser-dot"></span>
+                                <span class="browser-url">tonyspizza-concept.example</span>
+                            </div>
+                            <div class="browser-content">
+                                <div class="tp-header">
+                                    <span class="tp-logo">🍕 Tony's Pizza</span>
+                                    <div class="tp-nav">
+                                        <span>Menu</span>
+                                        <span>Specials</span>
+                                        <span>Order</span>
+                                    </div>
+                                </div>
+                                <div class="tp-hero">
+                                    <div class="tp-hero-img"></div>
+                                    <div class="tp-hero-text">
+                                        <h4>Handmade pizza, just like home.</h4>
+                                        <p>Family recipes since 1987. Order online for pickup or delivery.</p>
+                                        <span class="tp-btn">Order Now</span>
+                                    </div>
+                                </div>
+                                <div class="tp-menu-preview">
+                                    <div class="tp-menu-title">Popular Items</div>
+                                    <div class="tp-menu-items">
+                                        <div class="tp-menu-item">
+                                            <span class="tp-menu-item-name">Margherita</span>
+                                            <span class="tp-menu-item-price">$12.99</span>
+                                        </div>
+                                        <div class="tp-menu-item">
+                                            <span class="tp-menu-item-name">Pepperoni</span>
+                                            <span class="tp-menu-item-price">$14.99</span>
+                                        </div>
+                                        <div class="tp-menu-item">
+                                            <span class="tp-menu-item-name">Veggie Supreme</span>
+                                            <span class="tp-menu-item-price">$15.99</span>
+                                        </div>
+                                        <div class="tp-menu-item">
+                                            <span class="tp-menu-item-name">BBQ Chicken</span>
+                                            <span class="tp-menu-item-price">$16.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Restaurant</span>
+                        <h3>Tony's Pizza</h3>
+                        <p>A warm, inviting website for a family-owned pizzeria. Features an organized menu with pricing, combo deals, location info, and a clear call to action for ordering.</p>
+                        <button class="btn btn-secondary btn-small view-demo" data-project="pizza">View Demo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SERVICES
+         ============================================ -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services-header">
+                <span class="section-label">Services</span>
+                <h2 class="section-title">Simple pricing, real websites.</h2>
+                <p class="section-subtitle">No hidden fees, no upsells. Just a website that works for your business.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3 class="service-name">Starter Website</h3>
+                    <div class="service-price">$35+ <span>one-time</span></div>
+                    <ul class="service-features">
+                        <li>One-page website</li>
+                        <li>Mobile-friendly design</li>
+                        <li>Business information</li>
+                        <li>Contact buttons</li>
+                        <li>Custom styling</li>
+                    </ul>
+                </div>
+                <div class="service-card featured">
+                    <h3 class="service-name">Business Website</h3>
+                    <div class="service-price">$90+ <span>one-time</span></div>
+                    <ul class="service-features">
+                        <li>Multiple pages</li>
+                        <li>Custom layout</li>
+                        <li>Responsive design</li>
+                        <li>Contact section</li>
+                        <li>More customization</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3 class="service-name">Custom Project</h3>
+                    <div class="service-price">Let's talk</div>
+                    <ul class="service-features">
+                        <li>Custom features</li>
+                        <li>More advanced interactions</li>
+                        <li>Larger websites</li>
+                        <li>Custom requirements</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="services-note">Final pricing depends on the size and requirements of the project.</p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PROCESS
+         ============================================ -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="process-header">
+                <span class="section-label">How it works</span>
+                <h2 class="section-title">From idea to live website.</h2>
+                <p class="section-subtitle">A straightforward process with no surprises.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h4 class="step-title">Tell me what you need</h4>
+                    <p class="step-desc">Share your business details, preferences, and what you want your site to do.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h4 class="step-title">I design the site</h4>
+                    <p class="step-desc">I'll build out a custom design based on your brand and goals.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h4 class="step-title">We make adjustments</h4>
+                    <p class="step-desc">You review the design and we refine it until it's right.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h4 class="step-title">You get the full website</h4>
+                    <p class="step-desc">I send you the full code and data</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         WHY WORK WITH ME
+         ============================================ -->
+    <section class="why-me">
+        <div class="container">
+            <div class="why-me-grid">
+                <div>
+                    <span class="section-label">Why work with me</span>
+                    <h2 class="section-title">No agency overhead. Just good websites.</h2>
+                    <p class="section-subtitle">When you work with an independent developer, you get direct communication and honest pricing — no layers of account managers adding cost.</p>
+                </div>
+                <ul class="why-me-list">
+                    <li>
+                        <h4>Affordable pricing</h4>
+                        <p>Without the overhead of a big agency, I can offer real value to small businesses just getting started online.</p>
+                    </li>
+                    <li>
+                        <h4>Direct communication</h4>
+                        <p>You talk to the person actually building your website. No middlemen, no miscommunication.</p>
+                    </li>
+                    <li>
+                        <h4>Genuinely custom</h4>
+                        <p>Each site is built specifically for your business — not a template with your name swapped in.</p>
+                    </li>
+                    <li>
+                        <h4>Personal attention</h4>
+                        <p>I take on a limited number of projects so each one gets the focus and care it deserves.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CONTACT
+         ============================================ -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-label">Get in touch</span>
+                    <h2>Have a business that needs a website?</h2>
+                    <p>Tell me a little about your business and what you're looking for. I'll get back to you within a day or two to talk about how we can work together.</p>
+                    <div class="contact-alt">
+                        Prefer email? Send me a message at <a href="mailto:emeraldkatana.entertainment@gmail.com">emeraldkatana.entertainment@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-direct">
+                    <h3>Let's work together</h3>
+                    <p>Have a website idea or need a site for your business? Reach out and tell me what you need.</p>
+                    <a class="contact-email" href="mailto:emeraldkatana.entertainment@gmail.com">emeraldkatana.entertainment@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <div class="footer-brand">OrvioSite</div>
+                <div class="footer-tagline">Affordable websites for small businesses.</div>
+            </div>
+            <div class="footer-copy">&copy; 2026 OrvioSite</div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         MODAL OVERLAY
+         ============================================ -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" role="dialog" aria-modal="true">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // =============================================
+        // CONFIGURATION
+        // =============================================
+        // ⚠️ REPLACE THIS WITH YOUR ACTUAL EMAIL ADDRESS
+        const CONTACT_EMAIL = 'emeraldkatana.entertainment@gmail.com';
+        // =============================================
+
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        navToggle.addEventListener('click', () => {
+            const isActive = navToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', isActive);
+            document.body.style.overflow = isActive ? 'hidden' : '';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // =============================================
+        // CONTACT FORM
+        // =============================================
+        // The form submits through FormSubmit so it works on
+        // static hosting such as GitHub Pages.
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', () => {
+            const emailField = document.getElementById('email');
+            emailField.name = 'Customer email';
+        });
+
+        // =============================================
+        // PROJECT DEMO MODALS
+        // =============================================
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalContent = document.getElementById('modalContent');
+        const modalClose = document.querySelector('.modal-close');
+
+        const demoContent = {
+            landscaping: {
+                category: 'Landscaping',
+                title: 'GreenLeaf Landscaping',
+                description: 'A clean, nature-inspired website for a local landscaping company. Features service listings, customer testimonials, and easy quote requests — all designed to convert visitors into leads.',
+                html: `
+                    <div class="browser-mockup modal-browser modal-gl">
+                        <div class="browser-bar">
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                            <span class="browser-url">greenleaf-concept.example</span>
+                        </div>
+                        <div class="browser-content">
+                            <div class="gl-header">
+                                <div class="gl-logo">
+                                    <span class="gl-logo-leaf"></span>
+                                    GreenLeaf Landscaping
+                                </div>
+                                <div class="gl-nav">
+                                    <span>Services</span>
+                                    <span>Gallery</span>
+                                    <span>About</span>
+                                    <span>Contact</span>
+                                </div>
+                            </div>
+                            <div class="gl-hero">
+                                <div class="gl-hero-text">
+                                    <h4>Beautiful lawns, expertly maintained.</h4>
+                                    <p>Professional landscaping services for homes and businesses in the greater Springfield area. Licensed, insured, and family-owned since 2015.</p>
+                                    <span class="gl-btn">Get Free Quote →</span>
+                                </div>
+                                <div class="gl-hero-img"></div>
+                            </div>
+                            <div class="gl-services">
+                                <div class="gl-service">
+                                    <div class="gl-service-icon">🌳</div>
+                                    <span class="gl-service-label">Lawn Care</span>
+                                </div>
+                                <div class="gl-service">
+                                    <div class="gl-service-icon">🌺</div>
+                                    <span class="gl-service-label">Garden Design</span>
+                                </div>
+                                <div class="gl-service">
+                                    <div class="gl-service-icon">🍂</div>
+                                    <span class="gl-service-label">Seasonal Cleanup</span>
+                                </div>
+                            </div>
+                            <div class="gl-testimonial">
+                                <p>"GreenLeaf transformed our backyard completely. Professional, on-time, and the results speak for themselves. Highly recommend."</p>
+                                <span class="author">— Sarah M., Springfield</span>
+                            </div>
+                            <div class="gl-cta">
+                                <h5>Ready for a better lawn?</h5>
+                                <p>Get a free estimate — no obligation, no pressure.</p>
+                                <span class="gl-cta-btn">Request Your Quote</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            barber: {
+                category: 'Barbershop',
+                title: 'Downtown Cuts',
+                description: 'A bold, dark-themed website with gold accents designed to match the shop\'s interior. Features service pricing, operating hours, a photo gallery, and online booking.',
+                html: `
+                    <div class="browser-mockup modal-browser modal-db">
+                        <div class="browser-bar">
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                            <span class="browser-url">downtowncuts-concept.example</span>
+                        </div>
+                        <div class="browser-content">
+                            <div class="db-header">
+                                <span class="db-logo">DOWNTOWN CUTS</span>
+                                <div class="db-nav">
+                                    <span>Services</span>
+                                    <span>Barbers</span>
+                                    <span>Gallery</span>
+                                    <span>Book Now</span>
+                                </div>
+                            </div>
+                            <div class="db-hero">
+                                <div class="db-hero-text">
+                                    <h4>Sharp cuts.<br><span>Classic style.</span></h4>
+                                    <p>Traditional barbershop experience with modern precision. Walk-ins welcome, but booking online gets you priority seating.</p>
+                                    <span class="db-btn">Book Appointment</span>
+                                </div>
+                                <div class="db-hero-img"></div>
+                            </div>
+                            <div class="db-services">
+                                <div class="db-service">
+                                    <span class="db-service-name">Classic Cut</span>
+                                    <span class="db-service-price">$30</span>
+                                </div>
+                                <div class="db-service">
+                                    <span class="db-service-name">Beard Trim & Shape</span>
+                                    <span class="db-service-price">$15</span>
+                                </div>
+                                <div class="db-service">
+                                    <span class="db-service-name">Hot Towel Shave</span>
+                                    <span class="db-service-price">$35</span>
+                                </div>
+                                <div class="db-service">
+                                    <span class="db-service-name">The Works</span>
+                                    <span class="db-service-price">$65</span>
+                                </div>
+                            </div>
+                            <div class="db-hours">
+                                <div class="db-hours-title">Shop Hours</div>
+                                <div class="db-hours-grid">
+                                    <div class="db-hours-row">
+                                        <span class="day">Mon–Fri</span>
+                                        <span class="time">9:00 AM – 7:00 PM</span>
+                                    </div>
+                                    <div class="db-hours-row">
+                                        <span class="day">Saturday</span>
+                                        <span class="time">8:00 AM – 5:00 PM</span>
+                                    </div>
+                                    <div class="db-hours-row">
+                                        <span class="day">Sunday</span>
+                                        <span class="time">10:00 AM – 3:00 PM</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="db-gallery">
+                                <div class="db-gallery-item"></div>
+                                <div class="db-gallery-item"></div>
+                                <div class="db-gallery-item"></div>
+                                <div class="db-gallery-item"></div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            pizza: {
+                category: 'Restaurant',
+                title: "Tony's Pizza",
+                description: 'A warm, appetizing website for a family-owned pizzeria. Organized menu with pricing, combo deals and specials, location with hours, and a clear call to action for ordering online.',
+                html: `
+                    <div class="browser-mockup modal-browser modal-tp">
+                        <div class="browser-bar">
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                            <span class="browser-url">tonyspizza-concept.example</span>
+                        </div>
+                        <div class="browser-content">
+                            <div class="tp-header">
+                                <span class="tp-logo">🍕 Tony's Pizza</span>
+                                <div class="tp-nav">
+                                    <span>Menu</span>
+                                    <span>Specials</span>
+                                    <span>About</span>
+                                    <span>Order Online</span>
+                                </div>
+                            </div>
+                            <div class="tp-hero">
+                                <div class="tp-hero-img"></div>
+                                <div class="tp-hero-text">
+                                    <h4>Handmade pizza, just like home.</h4>
+                                    <p>Family recipes since 1987. Fresh dough made daily, premium toppings, and a sauce recipe that's been passed down three generations.</p>
+                                    <span class="tp-btn">Order Online →</span>
+                                </div>
+                            </div>
+                            <div class="tp-menu-preview">
+                                <div class="tp-menu-title">From Our Menu</div>
+                                <div class="tp-menu-items">
+                                    <div class="tp-menu-item">
+                                        <span class="tp-menu-item-name">Margherita</span>
+                                        <span class="tp-menu-item-price">$12.99</span>
+                                    </div>
+                                    <div class="tp-menu-item">
+                                        <span class="tp-menu-item-name">Pepperoni</span>
+                                        <span class="tp-menu-item-price">$14.99</span>
+                                    </div>
+                                    <div class="tp-menu-item">
+                                        <span class="tp-menu-item-name">Veggie Supreme</span>
+                                        <span class="tp-menu-item-price">$15.99</span>
+                                    </div>
+                                    <div class="tp-menu-item">
+                                        <span class="tp-menu-item-name">BBQ Chicken</span>
+                                        <span class="tp-menu-item-price">$16.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tp-specials">
+                                <div class="tp-special">
+                                    <div class="tp-special-emoji">🍕</div>
+                                    <h5>Large Pizza</h5>
+                                    <div class="desc">Any 2 toppings</div>
+                                    <div class="price">$14.99</div>
+                                </div>
+                                <div class="tp-special popular">
+                                    <div class="tp-special-emoji">🍕🥤</div>
+                                    <h5>Combo Deal</h5>
+                                    <div class="desc">Large pizza + 2L drink</div>
+                                    <div class="price">$18.99</div>
+                                </div>
+                                <div class="tp-special">
+                                    <div class="tp-special-emoji">👨‍👩‍👧‍👦</div>
+                                    <h5>Family Pack</h5>
+                                    <div class="desc">2 large + garlic bread</div>
+                                    <div class="price">$34.99</div>
+                                </div>
+                            </div>
+                            <div class="tp-location">
+                                <div class="tp-location-info">
+                                    <h5>Visit Us</h5>
+                                    <p>247 Main Street<br>Springfield, IL 62701<br><br>Mon–Thu: 11am – 9pm<br>Fri–Sat: 11am – 11pm<br>Sun: 12pm – 8pm</p>
+                                </div>
+                                <div class="tp-location-map"></div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // Open modal
+        document.querySelectorAll('.view-demo').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const project = btn.dataset.project;
+                const data = demoContent[project];
+
+                modalContent.innerHTML = `
+                    ${data.html}
+                    <div class="modal-project-info">
+                        <span class="category">${data.category}</span>
+                        <h3>${data.title}</h3>
+                        <p>${data.description}</p>
+                    </div>
+                `;
+
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                modalClose.focus();
+            });
+        });
+
+        // Close modal
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // =============================================
+        // SMOOTH SCROLL for nav links (fallback)
+        // =============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
